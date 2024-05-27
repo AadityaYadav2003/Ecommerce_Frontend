@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import '../components/my_product_tile.dart';
+import '../components/my_subcategory_tile.dart';
 import '../models/product.dart';
 import '../themes/theme_provider.dart';
 import 'category_page.dart'; // Import the SelectedCategory provider
@@ -97,7 +98,7 @@ class _SubCategoryState extends State<SubCategory> {
               ),
               itemCount: _products.length,
               itemBuilder: (context, index) {
-                return MyProductTile(product: _products[index]);
+                return MySubProductTile(product: _products[index]);
               },
             );
           }

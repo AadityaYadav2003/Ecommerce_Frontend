@@ -48,7 +48,7 @@ class _MyDrawerState extends State<MyDrawer> {
 
               MyListTile(
                 text: "CATEGORY",
-                icon: Icons.shopping_cart,
+                icon: Icons.category,
                 onTap: () {
                   // pop drawer frist
                   Navigator.pop(context);
