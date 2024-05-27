@@ -34,7 +34,7 @@ class ProductDetailPage extends StatelessWidget {
               icon: const Icon(Icons.shopping_cart_outlined))
         ],
       ),
-      drawer: MyDrawer(),
+      // drawer: MyDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Column(

@@ -46,6 +46,18 @@ class _MyDrawerState extends State<MyDrawer> {
                 onTap: () => Navigator.pushNamed(context, '/shop_page'),
               ),
 
+              MyListTile(
+                text: "CATEGORY",
+                icon: Icons.shopping_cart,
+                onTap: () {
+                  // pop drawer frist
+                  Navigator.pop(context);
+
+                  // go to cart page
+                  Navigator.pushNamed(context, '/category_page');
+                },
+              ),
+
               // cart
               MyListTile(
                 text: "CART",

@@ -1,9 +1,8 @@
 import 'package:ecommerce/models/product.dart';
-import 'package:ecommerce/models/shop.dart';
 import 'package:ecommerce/pages/product_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:ecommerce/pages/product_detail.dart';
+import 'package:ecommerce/models/shop.dart';
 
 class MyProductTile extends StatefulWidget {
   final Product product;
@@ -18,18 +17,16 @@ class MyProductTile extends StatefulWidget {
 }
 
 class _MyProductTileState extends State<MyProductTile> {
-  // add to cart button pressed
   void addToCart(BuildContext context) {
-    // show a dialog box to ask user to confirm to add to cart
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        content: Text("Add this item to your cart?"),
+        content: const Text("Add this item to your cart?"),
         actions: [
           // cancel button
           MaterialButton(
             onPressed: () => Navigator.pop(context),
-            child: Text("Cancel"),
+            child: const Text("Cancel"),
           ),
           // yes button
           MaterialButton(
@@ -39,7 +36,7 @@ class _MyProductTileState extends State<MyProductTile> {
               // add to cart
               context.read<Shop>().addToCart(widget.product);
             },
-            child: Text("Yes"),
+            child: const Text("Yes"),
           ),
         ],
       ),
@@ -62,7 +59,7 @@ class _MyProductTileState extends State<MyProductTile> {
           color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(12),
         ),
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         padding: const EdgeInsets.all(25),
         width: 300,
         child: Column(
@@ -76,20 +73,23 @@ class _MyProductTileState extends State<MyProductTile> {
                 AspectRatio(
                   aspectRatio: 1,
                   child: Container(
-                      decoration: BoxDecoration(
-                        color: Theme.of(context).colorScheme.secondary,
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      width: double.infinity,
-                      padding: EdgeInsets.all(25),
-                      child: Image.network(
-                          "http://ecommerce.raviva.in/productimage/${widget.product.image!}")),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.secondary,
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    width: double.infinity,
+                    padding: const EdgeInsets.all(25),
+                    child: Image.network(
+                      "http://ecommerce.raviva.in/productimage/${widget.product.image!}",
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
                 const SizedBox(height: 25),
                 // product name
                 Text(
                   widget.product.productName!,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
