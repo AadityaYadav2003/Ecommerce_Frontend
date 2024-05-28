@@ -32,6 +32,7 @@ void main() async {
     ),
   );
 }
+
 /// To run app run command in terminal - flutter run -d chrome --web-renderer html
 
 class MyApp extends StatelessWidget {
@@ -53,9 +54,9 @@ class MyApp extends StatelessWidget {
         '/intro_page': (context) => const IntroPage(),
         '/shop_page': (context) => const ShopPage(),
         '/cart_page': (context) => const CartPage(),
-        '/category_page':(context)=>const CategoryPage(),
-        '/sub_category':(context)=>const SubCategory(),
+        '/category_page': (context) => const CategoryPage(),
+        '/sub_category': (context) => const SubCategory(),
       },
     );
-  } 
+  }
 }
