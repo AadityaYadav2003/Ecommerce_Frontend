@@ -56,14 +56,14 @@ class ProductDetailPage extends StatelessWidget {
             const SizedBox(height: 24),
             Text(
               product.productName!,
-              style: Theme.of(context).textTheme.headline5?.copyWith(
+              style: Theme.of(context).textTheme.headlineSmall?.copyWith(
                     fontWeight: FontWeight.bold,
                   ),
             ),
             const SizedBox(height: 8),
             Text(
               '₹${product.price}',
-              style: Theme.of(context).textTheme.headline6?.copyWith(
+              style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     color: Colors.green,
                     fontWeight: FontWeight.bold,
                   ),
@@ -71,7 +71,7 @@ class ProductDetailPage extends StatelessWidget {
             const SizedBox(height: 16),
             Text(
               product.description!,
-              style: Theme.of(context).textTheme.bodyText1?.copyWith(
+              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                     height: 1.5,
                   ),
             ),
@@ -89,7 +89,7 @@ class ProductDetailPage extends StatelessWidget {
               child: const Text('Add to Cart'),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
-                textStyle: Theme.of(context).textTheme.button?.copyWith(
+                textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
                       fontSize: 18,
                     ),
               ),

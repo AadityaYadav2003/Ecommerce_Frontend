@@ -37,7 +37,7 @@ class _CategoryPageState extends State<CategoryPage> with SingleTickerProviderSt
         backgroundColor: Colors.transparent,
         elevation: 0,
         foregroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text("Shop"),
+        title: const Text("Category"),
         actions: [
           IconButton(
               onPressed: () {
