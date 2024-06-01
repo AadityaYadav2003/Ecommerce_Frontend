@@ -1,6 +1,5 @@
 import 'package:ecommerce/components/my_drawer.dart';
 import 'package:ecommerce/components/my_product_tile.dart';
-import 'package:ecommerce/models/shop.dart';
 import 'package:ecommerce/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -47,7 +46,7 @@ class _ShopPageState extends State<ShopPage> {
               icon: const Icon(Icons.shopping_cart_outlined))
         ],
       ),
-      drawer: MyDrawer(),
+      drawer: const MyDrawer(),
       backgroundColor: Theme.of(context).colorScheme.background,
       body: FutureBuilder<List<Product>>(
         future: fetchData(),
@@ -61,7 +60,7 @@ class _ShopPageState extends State<ShopPage> {
               child: Text('Error: ${snapshot.error}'),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text('No data available'),
             );
           } else {
