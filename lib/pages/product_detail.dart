@@ -1,9 +1,7 @@
-import 'package:ecommerce/components/my_drawer.dart';
 import 'package:ecommerce/models/shop.dart';
 import 'package:ecommerce/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:ecommerce/models/product.dart';
-import 'package:flutter/widgets.dart';
 import 'package:provider/provider.dart';
 
 class ProductDetailPage extends StatelessWidget {
