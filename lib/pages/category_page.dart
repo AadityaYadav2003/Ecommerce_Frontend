@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -61,7 +60,7 @@ class _CategoryPageState extends State<CategoryPage> with SingleTickerProviderSt
               child: Text('Error: ${snapshot.error}'),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text('No data available'),
             );
           } else {

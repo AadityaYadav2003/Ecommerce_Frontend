@@ -2,7 +2,6 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
-import '../components/my_product_tile.dart';
 import '../components/my_subcategory_tile.dart';
 import '../models/product.dart';
 import '../themes/theme_provider.dart';
@@ -84,7 +83,7 @@ class _SubCategoryState extends State<SubCategory> {
               child: Text('Error: ${snapshot.error}'),
             );
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(
+            return const Center(
               child: Text('No data available'),
             );
           } else {
