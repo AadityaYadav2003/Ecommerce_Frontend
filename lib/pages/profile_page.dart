@@ -74,7 +74,7 @@ class _ProfilePageState extends State<ProfilePage> {
               const Row(
                 children: [
                   Text(
-                    'Name',
+                    'Name : ',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(width: 10),
@@ -83,47 +83,11 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const SizedBox(height: 20),
 
-              // Username
-              const Row(
-                children: [
-                  Text(
-                    'Username',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(width: 10),
-                  Text('M_I_N_I_M_A_L'),
-                ],
-              ),
-
-              // Personal Information
-              const Divider(),
-              const SizedBox(height: 10),
-              const Text(
-                'PERSONAL INFORMATION',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 20),
-
-              // User Id
-              const Row(
-                children: [
-                  Text(
-                    'User Id',
-                    style: TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  SizedBox(width: 10),
-                  Text('987654'),
-                ],
-              ),
-              const SizedBox(height: 20),
-
               // Email Id
               const Row(
                 children: [
                   Text(
-                    'Email Id',
+                    'Email Id : ',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(width: 10),
@@ -136,7 +100,7 @@ class _ProfilePageState extends State<ProfilePage> {
               const Row(
                 children: [
                   Text(
-                    'Phone No.',
+                    'Phone No. : ',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(width: 10),
@@ -145,17 +109,19 @@ class _ProfilePageState extends State<ProfilePage> {
               ),
               const SizedBox(height: 20),
 
-              // Date of Birth
+                // Password
               const Row(
                 children: [
                   Text(
-                    'Date of Birth',
+                    'Password : ',
                     style: TextStyle(fontWeight: FontWeight.bold),
                   ),
                   SizedBox(width: 10),
-                  Text('11/11/11'),
+                  Text('1234567890'),
                 ],
               ),
+              const SizedBox(height: 20),
+
             ],
           ),
         ),
