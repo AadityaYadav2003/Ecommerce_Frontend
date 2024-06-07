@@ -59,18 +59,6 @@ class _SubCategoryState extends State<SubCategory> {
               icon: const Icon(Icons.shopping_cart_outlined))
         ],
       ),
-      // body:  GridView.builder(
-      //   padding: const EdgeInsets.all(10),
-      //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-      //     crossAxisCount: 2,
-      //     crossAxisSpacing: 10,
-      //     mainAxisSpacing: 10,
-      //   ),
-      //   itemCount: _products.length,
-      //   itemBuilder: (context, index) {
-      //     return MyProductTile(product: _products[index]);
-      //   },
-      // ),
       body: FutureBuilder<List<Product>>(
         future: fetchProducts(),
         builder: (context, snapshot) {
