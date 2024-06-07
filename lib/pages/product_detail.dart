@@ -9,12 +9,9 @@ class ProductDetailPage extends StatelessWidget {
 
   const ProductDetailPage({Key? key, required this.product}) : super(key: key);
 
-  
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -84,13 +81,13 @@ class ProductDetailPage extends StatelessWidget {
                   ),
                 );
               },
-              child: const Text('Add to Cart'),
               style: ElevatedButton.styleFrom(
                 padding: const EdgeInsets.symmetric(vertical: 16.0),
                 textStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
                       fontSize: 18,
                     ),
               ),
+              child: const Text('Add to Cart'),
             ),
           ],
         ),

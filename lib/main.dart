@@ -8,6 +8,7 @@ import 'package:ecommerce/pages/shop_page.dart';
 import 'package:ecommerce/pages/intro_page.dart';
 import 'package:ecommerce/pages/login_page.dart';
 import 'package:ecommerce/pages/sub_category.dart';
+import 'package:ecommerce/provider/user_provider.dart';
 import 'package:ecommerce/themes/theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -24,6 +25,7 @@ void main() async {
           create: (context) => Shop(),
         ),
         ChangeNotifierProvider(create: (_) => SelectedCategory()),
+        ChangeNotifierProvider(create: (_) => UserProvider()),
         ChangeNotifierProvider(
           create: (context) => ThemeProvider(),
         )

@@ -3,10 +3,11 @@ import 'dart:convert';
 import 'package:ecommerce/components/my_button.dart';
 import 'package:ecommerce/components/my_textfield.dart';
 import 'package:ecommerce/pages/shop_page.dart';
+import 'package:ecommerce/provider/user_provider.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -16,19 +17,18 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  static const String EMAILKEY = "email";
-  static const String PASSKEY = "password";
-  static const String LOGIN = "isLoggedIn";
   // text controllers
   final TextEditingController emailController = TextEditingController();
-
   final TextEditingController passwordController = TextEditingController();
 
-  String? savedEmail;
-
-  String? savedPassword;
-
   bool _isLogginIn = false;
+
+  @override
+  void initState() {
+    super.initState();
+    // Load saved credentials if available
+    Provider.of<UserProvider>(context, listen: false).loadUser();
+  }
 
   // login method
   void _login() async {
@@ -36,9 +36,7 @@ class _LoginPageState extends State<LoginPage> {
       _isLogginIn = true;
     });
 
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    savedEmail = prefs.getString(EMAILKEY);
-    savedPassword = prefs.getString(PASSKEY);
+    final userProvider = Provider.of<UserProvider>(context, listen: false);
 
     // Validate email format
     if (!EmailValidator.validate(emailController.text.trim())) {
@@ -75,47 +73,8 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       );
-    } else if (savedEmail != null && savedPassword != null) {
-      if (emailController.text == savedEmail &&
-          passwordController.text == savedPassword) {
-        //   Login successful (navigate to next page or show success message)
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const ShopPage()),
-        );
-        print('Login successful using saved credentials.');
-      }
-      // it was else if
-      if (emailController.text != savedEmail &&
-          passwordController.text != savedPassword) {
-        //  NO saved Credentials
-        try {
-          final response = await http.post(
-            Uri.parse('https://ecommercebackend-x2kr.onrender.com/user/login'),
-            body: jsonEncode({
-              'email': emailController.text,
-              'password': passwordController.text,
-            }),
-            headers: {'Content-Type': 'application/json'},
-          );
-          if (response.statusCode == 200) {
-            var prefs = await SharedPreferences.getInstance();
-            prefs.setString(EMAILKEY, emailController.text);
-            prefs.setString(PASSKEY, passwordController.text);
-            prefs.setBool(LOGIN, true);
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ShopPage()),
-            );
-            print('Login Using API');
-          } else {
-            print('Login failed with status code: ${response.statusCode}');
-          }
-        } catch (error) {
-          print('Error: $error');
-        }
-      }
     } else {
+      // Attempt to log in using the API
       try {
         final response = await http.post(
           Uri.parse('https://ecommercebackend-x2kr.onrender.com/user/login'),
@@ -125,16 +84,15 @@ class _LoginPageState extends State<LoginPage> {
           }),
           headers: {'Content-Type': 'application/json'},
         );
+
         if (response.statusCode == 200) {
-          var prefs = await SharedPreferences.getInstance();
-          prefs.setString(EMAILKEY, emailController.text);
-          prefs.setString(PASSKEY, passwordController.text);
-          prefs.setBool(LOGIN, true);
-          Navigator.push(
+          await userProvider.setUser(emailController.text, passwordController.text);
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(builder: (context) => const ShopPage()),
           );
           print('Login Using API');
+
         } else {
           print('Login failed with status code: ${response.statusCode}');
         }
@@ -142,6 +100,7 @@ class _LoginPageState extends State<LoginPage> {
         print('Error: $error');
       }
     }
+
     setState(() {
       _isLogginIn = false;
     });
@@ -149,6 +108,8 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
+    final userProvider = Provider.of<UserProvider>(context);
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: Center(
