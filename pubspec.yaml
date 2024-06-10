@@ -44,6 +44,7 @@ dependencies:
   connectivity:
   flutter_media_downloader:
   image_picker:
+  payu_payment: ^0.0.3
 
 
 dev_dependencies:
