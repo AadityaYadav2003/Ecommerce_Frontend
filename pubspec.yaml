@@ -44,7 +44,6 @@ dependencies:
   connectivity:
   flutter_media_downloader:
   image_picker:
-  payu_checkoutpro_flutter: ^1.1.1
 
 
 dev_dependencies:
