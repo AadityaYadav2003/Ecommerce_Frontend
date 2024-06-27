@@ -44,8 +44,9 @@ dependencies:
   connectivity:
   flutter_media_downloader:
   image_picker:
-  phonepe_payment_sdk: ^2.0.1
+  phonepe_payment_sdk:
   crypto: ^3.0.3
+  better_player:
 
 
 dev_dependencies:
