@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:razorpay_flutter/razorpay_flutter.dart';
-import 'dart:convert'; // For using jsonDecode
-import 'package:http/http.dart' as http; // For making HTTP requests
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class Razorpayy extends StatefulWidget {
   const Razorpayy({super.key});
@@ -17,7 +17,7 @@ class _RazorpayyState extends State<Razorpayy> {
   void initState() {
     super.initState();
     _razorpay = Razorpay();
-    // Optionally, set event handlers for the Razorpay instance
+    //  event handlers for the Razorpay instance
     _razorpay.on(Razorpay.EVENT_PAYMENT_SUCCESS, _handlePaymentSuccess);
     _razorpay.on(Razorpay.EVENT_PAYMENT_ERROR, _handlePaymentError);
     _razorpay.on(Razorpay.EVENT_EXTERNAL_WALLET, _handleExternalWallet);
@@ -63,7 +63,7 @@ class _RazorpayyState extends State<Razorpayy> {
   void startPayment(String orderId) {
     var options = {
       'key': 'rzp_live_gbzy3irMcuTeSJ',
-      'amount': 50000, // Amount in paise
+      'amount': 500, // Amount in paise
       'name': 'Acme Corp.',
       'order_id': orderId, // Use the order_id from the Orders API
       'description': 'Fine T-Shirt',
